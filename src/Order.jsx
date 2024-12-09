@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import Pizza from "./Pizza";
 
 const intl = new Intl.NumberFormat("en-US", {
-  "style": "currency",
-  "currency": "USD",
+  style: "currency",
+  currency: "USD",
 });
 
 export default function Order() {
@@ -16,6 +16,7 @@ export default function Order() {
 
   if (!loading) {
     selectedPizza = pizzaTypes.find((pizza) => pizza.id === pizzaType);
+    price = intl.format(selectedPizza.sizes[pizzaSize]);
   }
 
   async function fetchPizzasTypes() {
@@ -36,7 +37,11 @@ export default function Order() {
         <div>
           <div>
             <label htmlFor="pizza-type">Pizza type</label>
-            <select name="pizza-type" value={pizzaType} onChange={(e) => setPizzaType(e.target.value)}>
+            <select
+              name="pizza-type"
+              value={pizzaType}
+              onChange={(e) => setPizzaType(e.target.value)}
+            >
               {pizzaTypes.map((pizza) => (
                 <option key={pizza.id} value={pizza.id}>
                   {pizza.name}
@@ -84,12 +89,16 @@ export default function Order() {
           </div>
           <button type="submit">Add to Cart</button>
           <div className="order-pizza">
-            <Pizza
-              name="Pepperoni"
-              description="A classic pizza with pepperoni"
-              image="/public/pizzas/pepperoni.webp"
-            />
-            <p>$13.37</p>
+            {loading ? (
+              <h1>Loading Pizzas</h1>
+            ) : (
+              <Pizza
+                name={selectedPizza.name}
+                description={selectedPizza.description}
+                image={selectedPizza.image}
+              />
+            )}
+            <p>{price}</p>
           </div>
         </div>
       </form>
