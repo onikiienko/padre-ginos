@@ -63,6 +63,9 @@ importers:
       vite:
         specifier: ^6.0.3
         version: 6.0.3(tsx@4.19.2)
+      vitest-fetch-mock:
+        specifier: ^0.4.2
+        version: 0.4.2(vitest@2.1.8(happy-dom@15.11.7))
 
 packages:
 
@@ -2032,6 +2035,12 @@ packages:
         optional: true
       yaml:
         optional: true
+
+  vitest-fetch-mock@0.4.2:
+    resolution: {integrity: sha512-MuN/TCAvvUs9sLMdOPKqdXEUOD0E5cNW/LN7Tro3KkrLBsvUaH7iQWcznNUU4ml+GqX6ZbNguDmFQ2tliKqhCg==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      vitest: '>=2.0.0'
 
   vitest@2.1.8:
     resolution: {integrity: sha512-1vBKTZskHw/aosXqQUlVWWlGUxSJR8YtiyZDJAFeW2kPAeX6S3Sool0mjspO+kXLuxVWlEDDowBAeqeAQefqLQ==}
@@ -4081,6 +4090,10 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
       tsx: 4.19.2
+
+  vitest-fetch-mock@0.4.2(vitest@2.1.8(happy-dom@15.11.7)):
+    dependencies:
+      vitest: 2.1.8(happy-dom@15.11.7)
 
   vitest@2.1.8(happy-dom@15.11.7):
     dependencies:
