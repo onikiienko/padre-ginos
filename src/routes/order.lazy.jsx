@@ -3,13 +3,9 @@ import { createLazyRoute } from "@tanstack/react-router";
 import Pizza from "../Pizza";
 import Cart from "../Cart";
 import { CartContext } from "../contexts";
+import { priceConverter } from "../useCurrency";
 
 export const Route = createLazyRoute("/order")({ component: Order });
-
-const intl = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-});
 
 function Order() {
   const [pizzaTypes, setPizzaTypes] = useState([]);
@@ -37,7 +33,7 @@ function Order() {
 
   if (!loading) {
     selectedPizza = pizzaTypes.find((pizza) => pizza.id === pizzaType);
-    price = intl.format(selectedPizza.sizes[pizzaSize]);
+    price = priceConverter(selectedPizza.sizes[pizzaSize]);
   }
 
   async function fetchPizzasTypes() {

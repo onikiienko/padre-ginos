@@ -1,9 +1,5 @@
 import { usePizzaOfTheDay } from "./usePizzaOfTheDay";
-
-const intl = new Intl.DateTimeFormat("en", {
-  style: "currency",
-  currency: "USD",
-});
+import { priceConverter } from "./useCurrency";
 
 const PizzaOfTheDay = () => {
   const pizzaOfTheDay = usePizzaOfTheDay();
@@ -20,7 +16,7 @@ const PizzaOfTheDay = () => {
           <h3>{pizzaOfTheDay.name}</h3>
           <p>{pizzaOfTheDay.description}</p>
           <p className="pizza-of-the-day-price">
-            {intl.format(pizzaOfTheDay.price)}
+            {priceConverter(pizzaOfTheDay.sizes.S)}
           </p>
         </div>
         <img

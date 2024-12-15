@@ -1,4 +1,4 @@
-const intl = new Intl.DateTimeFormat("en-US", {
+const intl = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
 });
