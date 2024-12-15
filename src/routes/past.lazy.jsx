@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { createLazyFileRoute } from "@tanstack/react-router";
-import getPastOrders from "./api/getPastOrders";
-import getPastOrder from "./api/getPastOrder";
+import getPastOrders from "../api/getPastOrders";
+import getPastOrder from "../api/getPastOrder";
 import Modal from "../Modal";
 import { priceConverter } from "../useCurrency";
 import ErrorBoundary from "../ErrorBoundary";
@@ -93,7 +93,7 @@ function PastOrdersRoute() {
               </thead>
               <tbody>
                 {pastOrder.orderItems.map((pizza) => (
-                  <tr key="${pizza.pizzaTypeId}_${pizza.size}">
+                  <tr key={`${pizza.pizzaTypeId}_${pizza.size}`}>
                     <td>
                       <img src={pizza.image} alt={pizza.name} />
                     </td>
