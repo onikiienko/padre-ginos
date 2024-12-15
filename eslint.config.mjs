@@ -34,6 +34,6 @@ export default [
   },
   prettier,
   {
-    ignores: ["**/api/**", "**/dist/**"],
+    ignores: ["**/api/**", "**/dist/**", "**/coverage/**"],
   },
 ];

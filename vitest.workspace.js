@@ -7,6 +7,7 @@ export default defineWorkspace([
       include: ["**/*.node.test.{js,jsx}"],
       name: "happy-dom",
       environment: "happy-dom",
+      coverage: { provider: "istanbul", reporter: ["html", "text", "json"] },
     },
   },
   {
@@ -15,6 +16,7 @@ export default defineWorkspace([
       setupFiles: ["vitest-browser-react"],
       include: ["**/*.browser.test.{js,jsx}"],
       name: "browser",
+      coverage: { reporter: ["html", "text", "json"] },
       browser: { provider: "playwright", enabled: true, name: "chromium" },
     },
   },
